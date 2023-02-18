@@ -5,12 +5,12 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     private Vector2 _direction = Vector2.right;
-    private List<Transform> _segments;
+    private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
+    public int initialSize = 4;
 
     private void Start() {
-        _segments = new List<Transform>();
-        _segments.Add(this.transform);
+        ResetState();
     }
     private void Update()
     {
@@ -52,7 +52,20 @@ public class Snake : MonoBehaviour
 
     private void ResetState()
     {
-        
+        for (int i = 1; i < _segments.Count; i++)
+        {
+            Destroy(_segments[i].gameObject);
+        }
+
+        _segments.Clear();
+        _segments.Add(this.transform);
+
+        for (int i = 1; i < this.initialSize; i++)
+        {
+            _segments.Add(Instantiate(this.segmentPrefab));
+        }
+
+        this.transform.position = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
