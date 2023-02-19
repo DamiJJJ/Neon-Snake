@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snake : MonoBehaviour
 {
@@ -9,12 +9,14 @@ public class Snake : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
-    public float speed = 20f;
+    public float speed = 15f;
     public float speedMultiplier = 1f;
     private float nextUpdate;
-
+    public Text scoreText;
+    private int score = 0;
     private void Start() {
         ResetState();
+        PrintScore(score);
     }
     private void Update()
     {
@@ -74,8 +76,10 @@ public class Snake : MonoBehaviour
     {
         Transform segment = Instantiate(this.segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
-
         segments.Add(segment);
+        // Wynik
+        score += 1;    
+        PrintScore(score);  
     }
     private void ResetState()
     {
@@ -91,7 +95,8 @@ public class Snake : MonoBehaviour
         {
             segments.Add(Instantiate(this.segmentPrefab));
         }
-
+        score = 0;
+        PrintScore(score);
         this.transform.position = Vector2.zero;                
     }
 
@@ -101,10 +106,14 @@ public class Snake : MonoBehaviour
             Grow();
         }
         else if (other.tag == "Obstacle"){
-            ResetState();
+            ResetState();           
         }        
     }
-
+    
+    private void PrintScore(int score)
+    {
+        scoreText.text = "Wynik: " + score.ToString();
+    }
     public bool Occupies(float x, float y)
     {
         foreach (Transform segment in segments)
