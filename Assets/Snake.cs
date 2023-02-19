@@ -6,7 +6,7 @@ public class Snake : MonoBehaviour
 {
     private Vector2 input;
     private Vector2 direction = Vector2.right;
-    private List<Transform> _segments = new List<Transform>();
+    private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
     public float speed = 20f;
@@ -58,9 +58,9 @@ public class Snake : MonoBehaviour
             return;
         }
 
-        for (int i = _segments.Count - 1; i > 0; i--)
+        for (int i = segments.Count - 1; i > 0; i--)
         {
-            _segments[i].position = _segments[i - 1].position;
+            segments[i].position = segments[i - 1].position;
         }
 
         float x = Mathf.Round(transform.position.x) + direction.x;
@@ -73,27 +73,26 @@ public class Snake : MonoBehaviour
     private void Grow()
     {
         Transform segment = Instantiate(this.segmentPrefab);
-        segment.position = _segments[_segments.Count - 1].position;
+        segment.position = segments[segments.Count - 1].position;
 
-        _segments.Add(segment);
+        segments.Add(segment);
     }
-
     private void ResetState()
     {
-        for (int i = 1; i < _segments.Count; i++)
+        for (int i = 1; i < segments.Count; i++)
         {
-            Destroy(_segments[i].gameObject);
+            Destroy(segments[i].gameObject);
         }
 
-        _segments.Clear();
-        _segments.Add(this.transform);
+        segments.Clear();
+        segments.Add(this.transform);
 
         for (int i = 1; i < this.initialSize; i++)
         {
-            _segments.Add(Instantiate(this.segmentPrefab));
+            segments.Add(Instantiate(this.segmentPrefab));
         }
 
-        this.transform.position = Vector3.zero;
+        this.transform.position = Vector2.zero;                
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -104,5 +103,17 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Obstacle"){
             ResetState();
         }        
+    }
+
+    public bool Occupies(float x, float y)
+    {
+        foreach (Transform segment in segments)
+        {
+            if (segment.position.x == x && segment.position.y == y)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
