@@ -9,6 +9,9 @@ public class Snake : MonoBehaviour
     private List<Transform> _segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
+    public float speed = 20f;
+    public float speedMultiplier = 1f;
+    private float nextUpdate;
 
     private void Start() {
         ResetState();
@@ -49,16 +52,22 @@ public class Snake : MonoBehaviour
             direction = input;
         }
 
+        // Poczekaj na kolejny update przed postępowaniem dalej
+        if (Time.time < nextUpdate)
+        {
+            return;
+        }
+
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
         }
 
-       this.transform.position = new Vector3(
-            Mathf.Round(this.transform.position.x) + direction.x,
-            Mathf.Round(this.transform.position.y) + direction.y,
-            0.0f
-       );
+        float x = Mathf.Round(transform.position.x) + direction.x;
+        float y = Mathf.Round(transform.position.y) + direction.y;
+
+        transform.position = new Vector2(x, y);
+        nextUpdate = Time.time + (1f / (speed * speedMultiplier));
     }
 
     private void Grow()
