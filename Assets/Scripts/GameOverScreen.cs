@@ -16,8 +16,8 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene("Snake");
     }
     
-    // public void ExitButton()
-    // {
-    //     SceneManager.LoadScene("MainMenu");
-    // }
+    public void ExitButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
