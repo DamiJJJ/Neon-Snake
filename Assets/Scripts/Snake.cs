@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Snake : MonoBehaviour
 {
     private Vector2 input;
+    private bool play = true;
     private Vector2 direction = Vector2.right;
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
@@ -13,6 +14,7 @@ public class Snake : MonoBehaviour
     public float speedMultiplier = 1f;
     private float nextUpdate;
     public Text scoreText;
+    public GameOverScreen GameOverScreen;
     private int score = 0;
     private void Start() {
         ResetState();
@@ -49,27 +51,29 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (input != Vector2.zero)
+        if (play == true)
         {
-            direction = input;
-        }
+            if (input != Vector2.zero)
+            {
+                direction = input;
+            }
+            // Poczekaj na kolejny update przed postępowaniem dalej
+            if (Time.time < nextUpdate)
+            {
+                return;
+            }
 
-        // Poczekaj na kolejny update przed postępowaniem dalej
-        if (Time.time < nextUpdate)
-        {
-            return;
-        }
+            for (int i = segments.Count - 1; i > 0; i--)
+            {
+                segments[i].position = segments[i - 1].position;
+            }
 
-        for (int i = segments.Count - 1; i > 0; i--)
-        {
-            segments[i].position = segments[i - 1].position;
-        }
+            float x = Mathf.Round(transform.position.x) + direction.x;
+            float y = Mathf.Round(transform.position.y) + direction.y;
 
-        float x = Mathf.Round(transform.position.x) + direction.x;
-        float y = Mathf.Round(transform.position.y) + direction.y;
-
-        transform.position = new Vector2(x, y);
-        nextUpdate = Time.time + (1f / (speed * speedMultiplier));
+            transform.position = new Vector2(x, y);
+            nextUpdate = Time.time + (1f / (speed * speedMultiplier));
+        }       
     }
 
     private void Grow()
@@ -106,7 +110,8 @@ public class Snake : MonoBehaviour
             Grow();
         }
         else if (other.tag == "Obstacle"){
-            ResetState();           
+            GameOverScreen.Setup(score);
+            play = false;        
         }        
     }
     
