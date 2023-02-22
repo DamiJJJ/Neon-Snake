@@ -16,6 +16,7 @@ public class Snake : MonoBehaviour
     public Text scoreText;
     public GameOverScreen GameOverScreen;
     private int score = 0;
+    public AudioSource growSoundEffect;
     private void Start() {
         ResetState();
         PrintScore(score);
@@ -84,6 +85,8 @@ public class Snake : MonoBehaviour
         // Wynik
         score += 1;    
         PrintScore(score);  
+        // dźwięk
+        growSoundEffect.Play();
     }
     private void ResetState()
     {
@@ -107,6 +110,7 @@ public class Snake : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Food"){
+
             Grow();
         }
         else if (other.tag == "Obstacle"){
