@@ -10,8 +10,7 @@ public class Snake : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
-    public float speed = 15f;
-    public float speedMultiplier = 1f;
+    public static float speed;
     private float nextUpdate;
     public Text scoreText;
     public GameOverScreen GameOverScreen;
@@ -73,7 +72,7 @@ public class Snake : MonoBehaviour
             float y = Mathf.Round(transform.position.y) + direction.y;
 
             transform.position = new Vector2(x, y);
-            nextUpdate = Time.time + (1f / (speed * speedMultiplier));
+            nextUpdate = Time.time + (1f / speed );
         }       
     }
 
