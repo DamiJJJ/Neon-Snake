@@ -828,15 +828,15 @@ RectTransform:
   m_GameObject: {fileID: 556692599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8064517, y: 0.8064517, z: 0.8064517}
+  m_LocalScale: {x: 0.8064518, y: 0.8064518, z: 0.8064518}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2099940508}
-  m_RootOrder: 5
+  m_Father: {fileID: 1819105668}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 256.95572, y: 41.601}
+  m_AnchoredPosition: {x: 236.07668, y: 25.194996}
   m_SizeDelta: {x: 34.8939, y: 37.683}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &556692604
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 556692599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1121539c1fe81c743959a0cc92f8728d, type: 3}
+  m_Script: {fileID: 11500000, guid: 25782d9735d7328498944496dde1fa0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedSlider: {fileID: 1819105669}
@@ -1029,7 +1029,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1819105668}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
@@ -1700,7 +1700,7 @@ RectTransform:
   m_Children:
   - {fileID: 1449400589}
   m_Father: {fileID: 1819105668}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1930,7 +1930,7 @@ RectTransform:
   m_Children:
   - {fileID: 131566063}
   m_Father: {fileID: 1819105668}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
@@ -2435,11 +2435,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 556692603}
   - {fileID: 698701374}
   - {fileID: 1602193576}
   - {fileID: 1316056974}
   m_Father: {fileID: 2099940508}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2500,18 +2501,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1819105670}
         m_TargetAssemblyTypeName: SpeedSlider, Assembly-CSharp
         m_MethodName: ChangeSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 556692604}
-        m_TargetAssemblyTypeName: SpeedSlider, Assembly-CSharp
-        m_MethodName: ShowSliderValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2993,7 +2982,6 @@ RectTransform:
   - {fileID: 1872397582}
   - {fileID: 1637490122}
   - {fileID: 1464739098}
-  - {fileID: 556692603}
   - {fileID: 1819105668}
   m_Father: {fileID: 1934788708}
   m_RootOrder: 0
