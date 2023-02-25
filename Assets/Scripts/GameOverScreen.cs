@@ -22,8 +22,9 @@ public class GameOverScreen : MonoBehaviour
     
     public void ExitButton()
     {
-        SceneManager.LoadScene("MainMenu");
-        Destroy(BGmusic.instance);
-        Destroy(Click.instance);
+        //! Usuwanie obiektów wcześniej ustawionych na DonDestroyOnLoad
+        Destroy(BGmusic.instance.gameObject);
+        Destroy(Click.instance.gameObject);
+        SceneManager.LoadScene("MainMenu");       
     }
 }

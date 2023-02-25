@@ -16,7 +16,7 @@ public class Snake : MonoBehaviour
     public GameOverScreen GameOverScreen;
     private int score = 0;
     public AudioSource growSoundEffect;
-    private void Start() {
+    private void Start() {    
         ResetState();
         PrintScore(score);
     }
