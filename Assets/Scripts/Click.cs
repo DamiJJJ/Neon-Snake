@@ -5,7 +5,7 @@ public class Click : MonoBehaviour
     public static Click instance;
     void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
             Destroy(gameObject);
         else
         {
