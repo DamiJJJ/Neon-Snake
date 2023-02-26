@@ -3,8 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public AudioSource click;
     private void Start()
     {
+        if (Click.instance.gameObject)
+        {
+            click = AudioSource.FindObjectOfType<AudioSource>();  
+        }
         if(!PlayerPrefs.HasKey("snakeSpeed"))
         {
             PlayerPrefs.SetFloat("snakeSpeed", 15);          
@@ -22,14 +27,18 @@ public class MainMenu : MonoBehaviour
             AudioListener.volume = PlayerPrefs.GetFloat("musicVolume");
         }       
     }
-    public void QuitGame()
-    {
-        Debug.Log("Game closed");      
-        Application.Quit();   
-    }
-
     public void StartGame()
     {
+        click.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);      
+    }
+    public void PlayClick()
+    {
+        click.Play(); 
+    }
+    public void QuitGame()
+    {
+        click.Play();    
+        Application.Quit();   
     }
 }
