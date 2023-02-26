@@ -14,9 +14,18 @@ public class Snake : MonoBehaviour
     private float nextUpdate;
     public Text scoreText;
     public GameOverScreen GameOverScreen;
-    private int score = 0;
     public AudioSource growSoundEffect;
-    private void Start() {    
+    private bool moveleft;
+    private bool moveright;
+    private bool moveup;
+    private bool movedown;
+
+    private int score = 0;
+    private void Start() {   
+        if (speed == 0)
+        {
+            speed = 15;
+        } 
         ResetState();
         PrintScore(score);
     }
@@ -25,25 +34,29 @@ public class Snake : MonoBehaviour
         // Możliwość skręcania w górę/dół gdy porusza się po osi x
         if (direction.x != 0f)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (moveup)
             {
                 input = Vector2.up;
+                moveup = false;
             } 
-            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            else if (movedown)
             {
                 input = Vector2.down;
+                movedown = false;
             }
         }
         // Możliwość skręcania w lewo/prawo gdy porusza się po osi y
         else if (direction.y != 0f)   
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (moveleft)
             {
                 input = Vector2.left;
+                moveleft = false;
             }
-            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            else if (moveright)
             {
                 input = Vector2.right;
+                moveright = false;
             }
         }    
         
@@ -74,6 +87,22 @@ public class Snake : MonoBehaviour
             transform.position = new Vector2(x, y);
             nextUpdate = Time.time + (1f / speed );
         }       
+    }
+    public void moveLeft()
+    {
+        moveleft = true;
+    }
+    public void moveRight()
+    {
+        moveright = true;
+    }
+    public void moveUp()
+    {
+        moveup = true;
+    }
+    public void moveDown()
+    {
+        movedown = true;
     }
 
     private void Grow()
