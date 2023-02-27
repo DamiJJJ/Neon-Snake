@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public AudioSource click;
+    public Text version;
     private void Start()
     {
+        version.GetComponent<Text>().text = "v." + Application.version;
         if (Click.instance.gameObject)
         {
             click = AudioSource.FindObjectOfType<AudioSource>();  

@@ -6,9 +6,11 @@ public class GameOverScreen : MonoBehaviour
 {
     public Text scoreText;
     public AudioSource gameOverSoundEffect;
+    public Canvas Arrows;
     private AudioSource click;
     public void Setup(int score)
     { 
+        Arrows.GetComponent<Canvas>().enabled = false;
         gameObject.SetActive(true);
         click = AudioSource.FindObjectOfType<AudioSource>();
         BGmusic.instance.GetComponent<AudioSource>().Pause();
