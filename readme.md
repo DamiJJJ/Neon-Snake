@@ -8,7 +8,7 @@ Game developed for Android.
 
 ## Download
 
-You can download current version of the .apk _[here](https://drive.google.com/file/d/1TM3oYI9TRDx81T-Pp5aRlvj7gJth-NRi/view?usp=sharing)_.
+You can download current version of the .apk _[here](https://www118.zippyshare.com/v/2HMszNMa/file.html)_.
 
 ## Changelog
 
