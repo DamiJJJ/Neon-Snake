@@ -17,36 +17,47 @@ public class Snake : MonoBehaviour
     public AudioSource growSoundEffect;
     private bool moveleft;
     private bool moveright;
-    private bool moveup;
-    private bool movedown;
 
     private int score = 0;
     private void Start() {   
         if (speed == 0)
         {
-            speed = 15;
+            speed = 5;
         } 
         ResetState();
         PrintScore(score);
     }
     private void Update()
     {
-        // Możliwość skręcania w górę/dół gdy porusza się po osi x
-        if (direction.x != 0f)
+        // Możliwość skręcania w górę/dół gdy porusza się w lewo/prawo
+        if (direction == Vector2.right)
         {
-            if (moveup)
+            if (moveleft)
             {
                 input = Vector2.up;
-                moveup = false;
+                moveleft = false;
             } 
-            else if (movedown)
+            else if (moveright)
             {
                 input = Vector2.down;
-                movedown = false;
+                moveright = false;
             }
         }
-        // Możliwość skręcania w lewo/prawo gdy porusza się po osi y
-        else if (direction.y != 0f)   
+        if (direction == Vector2.left)
+        {
+            if (moveleft)
+            {
+                input = Vector2.down;
+                moveleft = false;
+            } 
+            else if (moveright)
+            {
+                input = Vector2.up;
+                moveright = false;
+            }
+        }
+        // Możliwość skręcania w lewo/prawo gdy porusza się góra/dół
+        if (direction == Vector2.up)   
         {
             if (moveleft)
             {
@@ -58,7 +69,20 @@ public class Snake : MonoBehaviour
                 input = Vector2.right;
                 moveright = false;
             }
-        }    
+        }
+        if (direction == Vector2.down)   
+        {
+            if (moveleft)
+            {
+                input = Vector2.right;
+                moveleft = false;
+            }
+            else if (moveright)
+            {
+                input = Vector2.left;
+                moveright = false;
+            }
+        }   
         
     }
 
@@ -95,14 +119,6 @@ public class Snake : MonoBehaviour
     public void moveRight()
     {
         moveright = true;
-    }
-    public void moveUp()
-    {
-        moveup = true;
-    }
-    public void moveDown()
-    {
-        movedown = true;
     }
 
     private void Grow()

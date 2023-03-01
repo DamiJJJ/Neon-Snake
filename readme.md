@@ -8,9 +8,13 @@ Game developed for Android.
 
 ## Download
 
-You can download current version of the .apk _[here](https://drive.google.com/file/d/14-gvV7SuQkjDL3tOZ4X1TM6cxZIxN_sA/view?usp=sharing)_.
+You can download current version of the .apk _[here](https://drive.google.com/file/d/1TM3oYI9TRDx81T-Pp5aRlvj7gJth-NRi/view?usp=sharing)_.
 
 ## Changelog
+
+* v.1.2
+    - change controls to two arrows on edges of the screen
+    - add post processing fx - bloom
 
 * v.1.1
     - fix version number position
