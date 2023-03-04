@@ -27,7 +27,7 @@ public class Snake : MonoBehaviour
         ResetState();
         PrintScore(score);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         // Możliwość skręcania w górę/dół gdy porusza się w lewo/prawo
         if (direction == Vector2.right)
@@ -82,12 +82,8 @@ public class Snake : MonoBehaviour
                 input = Vector2.left;
                 moveright = false;
             }
-        }   
-        
-    }
+        } 
 
-    private void FixedUpdate()
-    {
         if (play == true)
         {
             if (input != Vector2.zero)

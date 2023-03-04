@@ -44,4 +44,9 @@ public class MainMenu : MonoBehaviour
         click.Play();    
         Application.Quit();   
     }
+
+    public void OpenGitHub()
+    {
+        Application.OpenURL("https://github.com/DamiJJJ/Neon-Snake");
+    }
 }
