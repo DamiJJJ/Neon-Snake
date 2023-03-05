@@ -13,7 +13,7 @@ You can download current version of the .apk _[here](https://mega.nz/file/WcBlBR
 ## Changelog
 
 * v.1.3
-    - move controls function to FixedUpdate Class (made snake more responsive)
+    - move controls function from Update to FixedUpdate function (made snake more responsive)
     - remove bloom from all objects
     - apply bloom to certain objects - snake, food and score
     - remove volume bar from settings menu
