@@ -8,7 +8,7 @@ Game developed for Android.
 
 ## Download
 
-You can download current version of the .apk _[here](https://mega.nz/file/WcBlBR7R#iXIkLfxzSR54ahxMYGTpNnH2nFOChk0Ek9cmDJzzLuE)_.
+You can download current version of the .apk _[here](https://github.com/DamiJJJ/Neon-Snake/releases)_.
 
 ## Changelog
 
