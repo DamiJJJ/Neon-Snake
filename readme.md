@@ -4,7 +4,7 @@ Simple Snake Game made in Unity. First project where i was learning how to use U
 Apart from the gameplay itself, game contains things like Main menu, settings and game over menu.
 Game developed for Android.
 
-## Current apk version: 1.1
+## Current apk version: 1.3
 
 ## Download
 
